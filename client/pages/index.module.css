@@ -8,7 +8,7 @@
     padding: 5rem;
 }
 
-.sloganSection, .userSection{
+.sloganSection{
   height: 40vh;
   display: flex;
   flex-direction: column;
@@ -57,4 +57,8 @@
 
 .userSection{
   min-width: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50vh;
 }
