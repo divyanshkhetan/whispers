@@ -1,0 +1,43 @@
+.formField{
+    padding: 1rem;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #ccc;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5rem;
+    width: 22vw;
+}
+
+.formField:focus{
+    outline: none;
+}
+
+.loginButton{
+    width: 15rem;
+    font-size: 1.1rem;
+    padding: 0.75rem ;
+    background: rgb(31, 30, 30);
+    color: #ccc;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 0.5rem;
+}
+
+.loginButton:hover{
+    color: white;
+    background: transparent;
+    border: 1px solid #ccc;
+    transition: linear 0.3s;
+}
+
+.showPassword{
+    margin: 0.5rem;
+}
+.registrationInfoDiv{
+    margin:0.5rem;
+}
+.registrationInfo{
+    font-size: 0.9rem;
+}

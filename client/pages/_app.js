@@ -1,7 +1,13 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import Branding from '../components/Branding';
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Branding />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp
