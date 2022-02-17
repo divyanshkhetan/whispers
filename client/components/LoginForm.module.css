@@ -15,14 +15,15 @@
 }
 
 .loginButton{
-    width: 15rem;
+    width: 15rem  !important;
+    height: 3.3rem !important;
     font-size: 1.1rem;
-    padding: 0.75rem ;
     background: rgb(31, 30, 30);
     color: #ccc;
     border: 1px solid transparent;
     border-radius: 5px;
     margin: 0.5rem;
+    padding: 0.75rem;
 }
 
 .loginButton:hover{

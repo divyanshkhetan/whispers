@@ -1,12 +1,13 @@
 import classes from './LoginForm.module.css';
 import { useRef, useState } from 'react';
-import Head from 'next/head';
+
 
 function LoginForm() {
 
     const email = useRef();
     const password = useRef();
     const [showPassword, setShowPassword] = useState(false);
+    const [preLoader, setPreLoader] = useState(false);
 
     function togglePassword() {
         setShowPassword(!showPassword);
@@ -14,14 +15,13 @@ function LoginForm() {
 
     function loginHandler(e) {
         e.preventDefault();
-        console.log(email.current.value, password.current.value);
+        // console.log(email.current.value, password.current.value);
+        setPreLoader(!preLoader);
     }
 
     return (
+
         <div>
-            <Head>
-                <script src="https://kit.fontawesome.com/ebdf1e96a8.js" crossorigin="anonymous"></script>
-            </Head>
             <form onSubmit={loginHandler}>
                 <div>
                     <input className={classes.formField} type="email" name="email" id="email" ref={email} placeholder="Email Address" />
@@ -33,7 +33,9 @@ function LoginForm() {
                     <img src="" alt="" />
                     <i onClick={togglePassword} className="fa-solid fa-fingerprint"></i>
                 </div>
-                <button className={classes.loginButton} type="submit">Login / Register</button>
+                <button className={classes.loginButton} type="submit">
+                    {preLoader ? <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_wp1lvfp0.json" background="transparent" speed="1" style={{ width: '3rem', margin: 'auto' }} loop autoplay></lottie-player> : <span className={classes.loginText}>Login/Register</span>}
+                </button>
                 <div className={classes.registrationInfoDiv}>
                     <i className={classes.registrationInfo}>(Registers if the email has not been registered previously)</i>
                 </div>
