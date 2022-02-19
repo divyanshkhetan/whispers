@@ -14,6 +14,7 @@ export default function Home() {
         <div className={classes.userSection}>
           <LoginForm />
           {/* SignUpForm */}
+          // TODO: Add Register Form and a blue 'Register' at the bottom of login to pop it open
         </div>
       </div>
       <div style={{ transform: 'translateY(-2rem)', zIndex: '2' }}>
@@ -22,3 +23,4 @@ export default function Home() {
     </div >
   )
 }
+
