@@ -34,7 +34,6 @@ function LoginForm({ setRegisterForm }) {
                     <input className={classes.formField} type={showPassword ? "text" : "password"} name="password" id="password" ref={password} placeholder="Password" />
                 </div>
                 <div className={classes.showPassword}>
-                    <img src="" alt="" />
                     <i onClick={togglePassword} className="fa-solid fa-fingerprint"></i>
                 </div>
                 <button className={classes.loginButton} type="submit">
