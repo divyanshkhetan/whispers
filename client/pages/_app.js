@@ -2,9 +2,10 @@ import '../styles/globals.css';
 import Branding from '../components/Branding';
 import Head from 'next/head';
 
-
+// TODO: Responsive design
 // TODO: Add Google Analytics to this application
 // TODO: Add developer footer to this application
+// TODO: Make it compatible for web app
 
 function MyApp({ Component, pageProps }) {
   return (

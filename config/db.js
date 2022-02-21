@@ -8,7 +8,8 @@ const uri = `mongodb+srv://${username}:${password}@cluster0.n34i1.mongodb.net/${
 const connectDB = async () => {
     try {
         await mongoose.connect(uri, {
-            useNewUrlParser: true
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
         });
         console.log("MongoDB connected...");
     } catch (err) {

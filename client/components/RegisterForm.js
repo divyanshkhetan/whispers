@@ -1,9 +1,10 @@
-import classes from './LoginForm.module.css';
+import classes from './RegisterForm.module.css';
 import { useRef, useState } from 'react';
 
 
-function LoginForm({ setRegisterForm }) {
+function RegisterForm({ setRegisterForm }) {
 
+    const name = useRef();
     const email = useRef();
     const password = useRef();
     const [showPassword, setShowPassword] = useState(false);
@@ -13,20 +14,23 @@ function LoginForm({ setRegisterForm }) {
         setShowPassword(!showPassword);
     }
 
-    function registerHandler() {
-        setRegisterForm(true);
-    }
-
-    function loginHandler(e) {
+    function registerHandler(e) {
         e.preventDefault();
         // console.log(email.current.value, password.current.value);
         setLoader(!loader);
     }
 
+    function loginHandler() {
+        setRegisterForm(false);
+    }
+
     return (
 
         <div>
-            <form onSubmit={loginHandler}>
+            <form onSubmit={registerHandler}>
+                <div>
+                    <input className={classes.formField} type="text" name="name" id="name" ref={name} placeholder="Name" />
+                </div>
                 <div>
                     <input className={classes.formField} type="email" name="email" id="email" ref={email} placeholder="Email Address" />
                 </div>
@@ -37,16 +41,16 @@ function LoginForm({ setRegisterForm }) {
                     <img src="" alt="" />
                     <i onClick={togglePassword} className="fa-solid fa-fingerprint"></i>
                 </div>
-                <button className={classes.loginButton} type="submit">
-                    {loader ? <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_wp1lvfp0.json" background="transparent" speed="1" style={{ width: '3rem', margin: 'auto' }} loop autoplay></lottie-player> : <span className={classes.loginText}>Login</span>}
+                <button className={classes.registerButton} type="submit">
+                    {loader ? <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_wp1lvfp0.json" background="transparent" speed="1" style={{ width: '3rem', margin: 'auto' }} loop autoplay></lottie-player> : <span className={classes.loginText}>Register</span>}
                 </button>
-                <div onClick={registerHandler}>
+                <div onClick={loginHandler}>
                     <span>or&nbsp;</span>
-                    <span className={classes.blue}>Register</span>
+                    <span className={classes.blue}>Login</span>
                 </div>
             </form>
         </div>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;

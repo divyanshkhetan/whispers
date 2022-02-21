@@ -1,7 +1,12 @@
 import classes from './index.module.css';
 import LoginForm from '../components/LoginForm';
+import RegisterForm from '../components/RegisterForm';
+import { useState } from 'react';
+
 
 export default function Home() {
+
+  const [registerForm, setRegisterForm] = useState(false);
 
   return (
 
@@ -12,9 +17,7 @@ export default function Home() {
           <h1 className={classes.slogan}>from <span className={classes.gradient2}>anyone</span> you know</h1>
         </div>
         <div className={classes.userSection}>
-          <LoginForm />
-          {/* SignUpForm */}
-          // TODO: Add Register Form and a blue 'Register' at the bottom of login to pop it open
+          {registerForm ? <RegisterForm setRegisterForm={setRegisterForm} /> : <LoginForm setRegisterForm={setRegisterForm} />}
         </div>
       </div>
       <div style={{ transform: 'translateY(-2rem)', zIndex: '2' }}>

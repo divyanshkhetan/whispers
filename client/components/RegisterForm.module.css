@@ -14,7 +14,7 @@
   outline: none;
 }
 
-.loginButton {
+.registerButton {
   width: 15rem !important;
   height: 3.3rem !important;
   font-size: 1.1rem;
@@ -26,7 +26,7 @@
   padding: 0.75rem;
 }
 
-.loginButton:hover {
+.registerButton:hover {
   color: white;
   background: transparent;
   border: 1px solid #ccc;
