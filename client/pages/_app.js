@@ -10,6 +10,7 @@ import Head from 'next/head';
 function MyApp({ Component, pageProps }) {
   return (
     <>
+      <Script src="https://third-party-script.js"></Script>
       <Head>
         <script src="https://kit.fontawesome.com/ebdf1e96a8.js" crossOrigin="anonymous"></script>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
