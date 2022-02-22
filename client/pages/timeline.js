@@ -11,7 +11,7 @@ export default function Timeline() {
     const [user, setUser] = useState('');
 
     useEffect(async () => {
-        const response = await axios.get('http://localhost:5000/api/auth');
+        const response = await axios.get('/api/auth');
         setUser(response.data.user);
         if (!(response.status === 201 && response.data.msg === 'authenticated')) {
             router.push('/');
@@ -19,7 +19,7 @@ export default function Timeline() {
     }, []);
 
     function logoutHandler() {
-        axios.get('http://localhost:5000/api/users/logout')
+        axios.get('/api/users/logout')
             .then(response => {
                 if (response.status === 200 && response.data.msg === 'logged out') {
                     router.push('/');

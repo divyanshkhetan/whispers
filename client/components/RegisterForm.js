@@ -42,7 +42,7 @@ function RegisterForm({ setRegisterForm }) {
             }
         };
 
-        axios.post('http://localhost:5000/api/users', userData, config)
+        axios.post('/api/users', userData, config)
             .then(response => {
                 setLoader(false);
                 if (response.status === 201 && response.data.msg === 'success') {

@@ -11,7 +11,7 @@ export default function Home() {
   axios.defaults.withCredentials = true;
   const router = useRouter();
   useEffect(async () => {
-    const response = await axios.get('http://localhost:5000/api/auth/');
+    const response = await axios.get('/api/auth/');
     if (response.status === 201 && response.data.msg === 'authenticated') {
       router.push('/timeline');
     }

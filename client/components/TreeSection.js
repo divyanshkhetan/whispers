@@ -8,7 +8,7 @@ export default function TreeSection({ userID }) {
     // var messages;
 
     const getData = () => {
-        axios.get(`http://localhost:5000/api/messages/${userID}`)
+        axios.get(`/api/messages/${userID}`)
             .then(data => setMessages(data.data))
             .catch(err => console.log(err));
     }
@@ -35,7 +35,7 @@ export default function TreeSection({ userID }) {
 
 export async function getServerSideProps() {
 
-    const response = await axios.get('http://localhost:5000/api/messages');
+    const response = await axios.get('/api/messages');
     console.log(response);
 
     return {

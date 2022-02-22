@@ -44,7 +44,7 @@ function LoginForm({ setRegisterForm }) {
             }
         };
 
-        axios.post('http://localhost:5000/api/auth', userData, config)
+        axios.post('/api/auth', userData, config)
             .then(response => {
                 setLoader(false);
                 if (response.data.msg === 'success') {
