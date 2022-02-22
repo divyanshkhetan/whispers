@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import Branding from '../components/Branding';
 import Head from 'next/head';
+import Script from 'next/script';
 
 // TODO: Responsive design
 // TODO: Add Google Analytics to this application
