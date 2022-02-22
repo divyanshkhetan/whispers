@@ -15,3 +15,12 @@
   size-adjust: 140%;
   background-color: rgb(59, 55, 55);
 }
+
+@media screen and (max-width: 790px) {
+  .logoutButton {
+    right: 0.5rem;
+  }
+  .container {
+    margin: 5rem 0.5rem;
+  }
+}

@@ -53,3 +53,9 @@
   font-style: italic;
   margin: 0.5rem;
 }
+
+@media screen and (max-width: 790px) {
+  .formField {
+    width: 80vw;
+  }
+}

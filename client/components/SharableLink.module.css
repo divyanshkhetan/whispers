@@ -68,3 +68,9 @@
 .green {
   background-color: rgb(103, 167, 8);
 }
+
+@media screen and (max-width: 790px) {
+  .containerOuter {
+    width: 90vw;
+  }
+}

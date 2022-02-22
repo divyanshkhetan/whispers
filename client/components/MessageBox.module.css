@@ -46,3 +46,13 @@
     #ff9966
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+@media screen and (max-width: 790px) {
+  .container {
+    min-width: 50%;
+    max-width: 70% !important;
+  }
+  .container span {
+    font-size: 0.8rem;
+  }
+}

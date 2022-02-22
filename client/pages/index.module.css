@@ -82,3 +82,18 @@
 .illustration img {
   width: 100%;
 }
+
+@media screen and (max-width: 790px) {
+  .sectionDivider {
+    flex-direction: column;
+  }
+
+  .slogan {
+    font-size: 2rem;
+  }
+
+  .illustration {
+    width: 60vw;
+    margin: 1rem auto;
+  }
+}
