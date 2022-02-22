@@ -72,3 +72,13 @@
   justify-content: center;
   min-height: 30vh;
 }
+
+.illustration {
+  width: 20vw;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.illustration img {
+  width: 100%;
+}

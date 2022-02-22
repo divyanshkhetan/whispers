@@ -6,7 +6,7 @@ function MessageBranch({ message, direction }) {
     return (
         <>
             {
-                direction % 2 === 1
+                (direction % 2 === 1)
                     ?
                     <div className={classes.container}>
                         <MessageBox message={message} direction={temp} />

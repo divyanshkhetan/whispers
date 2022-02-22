@@ -1,13 +1,18 @@
 import classes from './LoginForm.module.css';
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 
 function LoginForm({ setRegisterForm }) {
+
+    const router = useRouter();
 
     const email = useRef();
     const password = useRef();
     const [showPassword, setShowPassword] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     function togglePassword() {
         setShowPassword(!showPassword);
@@ -19,8 +24,41 @@ function LoginForm({ setRegisterForm }) {
 
     function loginHandler(e) {
         e.preventDefault();
-        // console.log(email.current.value, password.current.value);
         setLoader(!loader);
+        setErrorMessage('');
+
+        const userData = {
+            email: email.current.value.toLowerCase(),
+            password: password.current.value
+        };
+
+        if (password.current.value.length < 6) {
+            setErrorMessage('Password must be at least 6 characters long');
+            setLoader(false);
+            return;
+        }
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        axios.post('http://localhost:5000/api/auth', userData, config)
+            .then(response => {
+                setLoader(false);
+                if (response.data.msg === 'success') {
+                    router.push('/timeline');
+                }
+
+
+                setErrorMessage(response.data.msg);
+            })
+            .catch(err => {
+                setErrorMessage(err.message);
+            });
+
+
     }
 
     return (
@@ -44,6 +82,9 @@ function LoginForm({ setRegisterForm }) {
                     <span className={classes.blue}>Register</span>
                 </div>
             </form>
+            <div className={classes.errorMessage}>
+                {errorMessage}
+            </div>
         </div>
     );
 }

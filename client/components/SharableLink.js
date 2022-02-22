@@ -1,11 +1,15 @@
 import classes from './SharableLink.module.css';
 import { useState } from 'react';
 
-function SharableLink() {
+function SharableLink({ pvtID }) {
 
     const [copied, setCopied] = useState(false);
 
-    var uniqueLink = "Abhi link set karna baaki hai bc";
+    var uniqueLink = 'window nahi mila bc';
+    if (typeof window !== "undefined") {
+        uniqueLink = `${window.location.origin}/${pvtID}`;
+    }
+
     function copyHandler() {
         setCopied(true);
 

@@ -1,5 +1,7 @@
 const express = require('express');
 require('dotenv').config();
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 
@@ -9,6 +11,7 @@ connectDB();
 
 // Init Middleware
 app.use(express.json({ extended: false }));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
     res.json({

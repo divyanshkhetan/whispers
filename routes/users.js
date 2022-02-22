@@ -21,10 +21,13 @@ router.post('/', [
 
     const { name, email, password } = req.body;
 
+    res.clearCookie('token');
     try {
         let user = await User.findOne({ email: email });
         if (user) {
-            return res.status(400).json({ msg: 'User Already Exists' });
+            return res.status(200).json({ msg: 'User Already Exists' });
+        } else {
+            user = '';
         }
         user = new User({
             name: name,
@@ -48,13 +51,23 @@ router.post('/', [
             expiresIn: 604800
         }, (err, token) => {
             if (err) throw err;
-            res.json({ token: token });
+            res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV !== "development", maxAge: 7 * 24 * 60 * 60 * 1000 });
+            return res.status(201).json({ msg: 'success' });
         });
 
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+});
+
+
+// @route   GET api/users/logout
+// @desc    Logout a user
+// @access  Private
+router.get('/logout', async (req, res) => {
+    res.clearCookie('token');
+    return res.status(200).json({ msg: 'logged out' });
 });
 
 module.exports = router;

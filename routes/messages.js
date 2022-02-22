@@ -8,11 +8,11 @@ const Message = require('../models/Message');
 // @route   GET api/messages
 // @desc    Get all messages that you received
 // @access  Private
-router.get('/', auth, async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
 
     try {
-        const messages = await Message.find({ user: req.user.id }).sort({ date: -1 });
-
+        const messages = await Message.find({ user: req.params.id }).sort({ date: -1 });
+        // console.log(messages);
         res.json(messages);
     } catch (err) {
         console.error(err.message);
@@ -29,7 +29,7 @@ router.post('/', [
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(200).json({ errors: errors.array() });
     }
 
     const { message, userid } = req.body;
@@ -57,11 +57,11 @@ router.delete('/:id', auth, async (req, res) => {
         let message = await Message.findById(req.params.id);
 
         if (!message) {
-            return res.status(404).json({ msg: 'Message not found' });
+            return res.status(200).json({ msg: 'Message not found' });
         }
 
         if (message.user.toString() !== req.user.id) {
-            return res.status(401).json({ msg: 'Not authorized' });
+            return res.status(200).json({ msg: 'Not authorized' });
         }
 
         await Message.findByIdAndDelete(req.params.id);

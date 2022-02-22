@@ -14,7 +14,7 @@ const auth = require('../middleware/auth');
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
-        res.json(user);
+        res.status(201).json({ msg: "authenticated", user: user });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -30,20 +30,20 @@ router.post('/', [
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        return res.status(200).json({ errors: errors.array() });
     }
 
     const { email, password } = req.body;
     try {
         let user = await User.findOne({ email: email });
         if (!user) {
-            return res.status(400).json({ msg: "Invalid Credentials" });
+            return res.status(200).json({ msg: "Invalid Credentials" });
         }
 
         // Matching Password with database password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ msg: 'Invalid Credentials' });
+            return res.status(200).json({ msg: 'Invalid Credentials' });
         }
 
         // Generating token
@@ -57,7 +57,8 @@ router.post('/', [
             expiresIn: 604800
         }, (err, token) => {
             if (err) throw err;
-            res.json({ token: token });
+            res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV !== "development", maxAge: 7 * 24 * 60 * 60 * 1000 });
+            return res.status(200).json({ msg: 'success' });
         });
 
     } catch (err) {
@@ -65,5 +66,6 @@ router.post('/', [
         res.status(500).json('Server Error');
     }
 });
+
 
 module.exports = router;
