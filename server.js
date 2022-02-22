@@ -13,13 +13,6 @@ connectDB();
 app.use(express.json({ extended: false }));
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-    res.json({
-        msg: 'Welcome to the Internet'
-    })
-});
-
-
 // Routes 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
