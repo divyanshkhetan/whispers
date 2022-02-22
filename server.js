@@ -23,9 +23,9 @@ app.use('/api/messages', require('./routes/messages'));
 if (process.env.NODE_ENV === 'production') {
 
     // Set static folder
-    app.use(express.static('client/.next'));
+    app.use(express.static('client/out'));
 
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname + '.next' + 'server' + 'pages' + 'index.html')));
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname + 'client' + 'out' + 'index.html')));
 
 }
 
